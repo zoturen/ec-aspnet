@@ -1,0 +1,45 @@
+<div class="signup">
+    <form>
+        <h2>Create Account</h2>
+        <p>Already have an account? <a asp-controller="Auth" asp-action="SignIn">Sign in here.</a></p>
+        
+        
+        
+        <div class="input-row">
+            <div class="input-group">
+                <label for="sign-up-firstname">First name</label>
+                <input id="sign-up-firstname" placeholder="Enter your firstname" />
+            </div>
+            
+           <div class="input-group">
+                <label for="sign-up-lastname">Last name</label>
+                <input id="sign-up-lastname" placeholder="Enter your last name" />
+           </div>
+        </div>
+        
+     
+        
+        
+        <div class="input-group">
+            <label for="sign-up-email">Email</label>
+            <input id="sign-up-email" placeholder="Enter your email address" />
+        </div>
+        
+        <div class="input-group">
+            <label for="sign-up-password">Password</label>
+            <input id="sign-up-password" placeholder="********" type="password" />
+        </div>
+        
+        <div class="input-group">
+            <label for="sign-up-rep-password">Confirm Password</label>
+            <input id="sign-up-rep-password" placeholder="********" type="password" />
+        </div>
+        
+        <div class="input-checkbox-group">
+            <input type="checkbox" id="sign-in-remember-me">
+            <label for="sign-in-remember-me">I agree to the <a href="#">Terms</a> & <a href="#">Contitions</a>.</label>
+        </div>
+        
+        <button class="btn-theme">Sign up</button>
+    </form>
+</div>

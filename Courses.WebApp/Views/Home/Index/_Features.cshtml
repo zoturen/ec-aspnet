@@ -1,0 +1,22 @@
+@model FeatureViewModel
+
+<section class="features">
+    <div class="container">
+        <h2 class="h1">What Do You Get with Our Tool?</h2>
+        <p class="sub text-lg">Make sure all your tasks are organized so you can set the priorities and focus <br>on important.</p>
+        
+        <div class="feature-items">
+            @foreach(var feature in Model.FeatureItems)
+            {
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <img src="@feature.Image" alt="@feature.Title">
+                    </div>
+                    <h3 class="h5">@feature.Title</h3>
+                    <p class="text-m">@feature.Description</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+

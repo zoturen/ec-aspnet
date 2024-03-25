@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - Courses</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="wrapper @{ if (Context.Request.Cookies["DarkMode"] == "true"){ <text>dark-mode</text> } }">
+<header>
+    @await Html.PartialAsync("_Navbar")
+</header>
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="social-media">
+            <div>
+                <i class="fa-brands fa-square-facebook"></i>
+            </div>
+            <div>
+                <i class="fa-brands fa-twitter"></i>
+            </div>
+            <div>
+                <i class="fa-brands fa-square-instagram"></i>
+            </div>
+            <div>
+                <i class="fa-brands fa-youtube"></i>
+            </div>
+        </div>
+        <p>© 2024 Silicon. All rights reserved. Pulvinar urna condimentum amet tempor, ornare integer. Lorem odio justo malesuada suspendisse <br> viverra aliquet quisque turpis non. Feugiat in odio non nunc ornare consectetur.</p>
+    </div>
+</footer>
+<script>
+    document.body.classList.toggle('dark-mode', localStorage.getItem('DarkMode') === "true");
+</script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

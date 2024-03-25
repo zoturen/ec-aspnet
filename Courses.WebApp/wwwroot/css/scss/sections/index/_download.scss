@@ -1,0 +1,59 @@
+.download {
+  background-color: var(--gray-100);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  
+  body.dark-mode & {
+    background-color: var(--gray-850);
+  }
+  
+  .container {
+    @include container;
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--gray-200);
+
+    padding-top: 60px;
+    padding-bottom: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+
+    body.dark-mode & {
+      background-color: var(--gray-800);
+    }
+    
+    h2 {
+      margin-top: 60px;
+    }
+    .store {
+      display: flex;
+      gap: 4rem;
+      padding-top: 10px;
+      padding-bottom: 20px;
+      
+      a {
+        align-self: flex-end;
+      }
+      
+      .store-text {
+        span {
+          
+          body.dark-mode & {
+            color: var(--gray-500);
+          }
+        }
+       
+        p {
+          margin-bottom: 10px;
+        }
+        h4 {
+          margin-bottom: 0;
+          margin-top: 10px;
+        }
+        i {
+          color: var(--warning);
+        }
+      }
+    }
+  }
+}

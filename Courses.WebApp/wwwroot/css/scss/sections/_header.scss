@@ -1,0 +1,128 @@
+header {
+    padding: 15px 0;
+
+    .container {
+        @include container;
+        display: grid;
+        align-items: center;
+        grid-template-columns: 1fr auto;
+        grid-template-areas:  "logo mobile";
+        gap: 40px;
+        
+        @include lg {
+            grid-template-columns: auto 1fr auto auto;
+            grid-template-areas:  "logo menu switch buttons";
+            
+        }
+
+        #logo { grid-area: logo; }
+
+        #menu { 
+            grid-area: menu; 
+            display: none;
+
+            @include lg {
+                display: block;
+            }
+            
+            nav {
+                display: flex;
+                gap: 15px;
+            }
+        }
+        
+        .btn-switch-group {
+            display: none;
+            grid-area: switch;
+            align-items: center;
+            
+            @include lg {
+                display: flex;
+            }
+        }
+        
+        .btn-switch {
+            display: inline-block;
+            position: relative;
+            width: 60px;
+            height: 30px;
+            margin-right: 20px;
+            margin-left: 20px;
+            input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+            .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: var(--gray-700);
+                transition: .4s;
+
+                &:before {
+                    position: absolute;
+                    content: "";
+                    height: 24px;
+                    width: 24px;
+                    left: 4px;
+                    bottom: 3px;
+                    background-color: white;
+                    transition: .4s;
+                }
+
+                &.round {
+                    border-radius: 34px;
+
+                    &:before {
+                        border-radius: 50%;
+                    }
+                }
+            }
+
+            input:checked + .slider {
+                background-color: var(--theme);
+            }
+
+            input:focus + .slider {
+                box-shadow: 0 0 1px var(--theme);
+            }
+
+            input:checked + .slider:before {
+                transform: translateX(26px);
+            }
+        }
+
+        .account-buttons { 
+            grid-area: buttons; 
+            display: none;
+            gap: 15px;
+
+            @include lg {
+                display: flex;
+            }
+        }
+
+        .btn-mobile {
+            grid-area: mobile; 
+            display: block;
+            
+            
+            i {
+                font-size: 26px;
+                &:hover {
+                    color: var(--theme);
+                    cursor: pointer;
+                }
+            }
+
+            @include lg {
+                display: none;
+            }
+        }
+    }
+}

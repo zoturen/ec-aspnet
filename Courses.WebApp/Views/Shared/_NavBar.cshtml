@@ -1,0 +1,39 @@
+<div class="container">
+    <a asp-action="Index" asp-controller="Home"><img src="~/images/logo.svg" alt="courses logo"/></a>
+    <div id="menu">
+        <nav>
+            <a href="#" class="menu-link">Overview</a>
+            <a href="#" class="menu-link">Features</a>
+            <a href="#" class="menu-link">Contact</a>
+        </nav>
+    </div>
+    <div class="btn-switch-group">
+        <p>Light</p>
+        <label class="btn-switch">
+            <input type="checkbox"
+                   id="darkModeCheckbox" onchange="toggleDarkMode()"/>
+            <span class="slider round"></span>
+        </label>
+        <p>Dark</p>
+    </div> 
+    
+    <div class="account-buttons">
+        <a asp-controller="Auth" asp-action="SignIn" class="btn-theme-inverse"><i class="fa-solid fa-arrow-right-to-bracket"></i>Sign in</a>
+        <a asp-controller="Auth" asp-action="SignUp" class="btn-theme"><i class="fa-regular fa-user"></i>Sign up</a>
+    </div>
+    
+    <div class="btn-mobile">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+    
+    <script>
+        document.getElementById('darkModeCheckbox').checked = localStorage.getItem('DarkMode') === "true";
+    
+        function toggleDarkMode() {
+            let checkbox = document.getElementById('darkModeCheckbox');
+            localStorage.setItem('DarkMode', checkbox.checked);
+            document.body.classList.toggle('dark-mode', checkbox.checked);
+        }
+    </script>
+</div>
+

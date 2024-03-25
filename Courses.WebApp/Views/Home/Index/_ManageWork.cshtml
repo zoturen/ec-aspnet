@@ -1,0 +1,18 @@
+@model ManageWorkViewModel
+
+<section class="manage-work">
+    <div class="container">
+        <img src="~/images/manage-work.svg" alt="sweet workspace"/>
+        <div class="manage-work-text">
+            <h2 class="h2">Manage your work</h2>
+            <ul>
+                @foreach(var item in Model.ManageWorkItems)
+                {
+                    <li><i class="fa-solid fa-check"></i>@item</li>
+                }
+            </ul>
+            <a href="#" class="btn-theme">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+

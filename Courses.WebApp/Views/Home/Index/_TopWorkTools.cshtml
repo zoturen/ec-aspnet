@@ -1,0 +1,18 @@
+@model WorkToolViewModel
+
+<section class="top-work-tools">
+    <div class="header">
+        <h2 class="h1">Integrate Top Work Tools</h2>
+        <p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin volutpat mollis egestas. Nam luctus facilisis ultrices. Pellentesque volutpat ligula est. Mattis fermentum, at nec lacus.</p>
+    </div>
+    
+    <div class="work-tools">
+        @foreach (var tool in Model.WorkTools)
+        {
+            <div class="work-tool-item">    
+                <img src="@tool.Image" alt="great tool for success">
+                <p class="text-m">@tool.Description</p>
+            </div>
+        }
+    </div>
+</section>

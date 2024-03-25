@@ -1,0 +1,30 @@
+.showcase {
+  position: relative;
+  #showcase-img {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  .showcase-text {
+    .container {
+      @include container;
+      padding-top: 100px;
+      
+      a {
+        max-width: 210px;
+        padding: 20px 20px;
+        margin-top: 50px;
+        margin-bottom: 100px;
+      }
+      
+      .showcase-logos {
+        margin-top: 40px;  
+      }
+      
+      .company-logo {
+        margin-right: 20px;
+      }
+    }
+  }
+}

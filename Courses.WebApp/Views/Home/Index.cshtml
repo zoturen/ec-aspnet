@@ -1,0 +1,138 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+    var featuresVievModel = new FeatureViewModel
+    {
+        FeatureItems =
+        [
+            new FeatureItemModel
+            {
+                Title = "Comments on Tasks",
+                Description = "Id mollis consectetur congue egestas egestas suspendisse blandit justo.",
+                Image = "images/comment.svg"
+            },
+            new FeatureItemModel
+            {
+                Title = "Tasks Analytics",
+                Description = "Id mollis consectetur congue egestas egestas suspendisse blandit justo.",
+                Image = "images/analytics.svg"
+            },
+            new FeatureItemModel
+            {
+                Title = "Multiple Assignees",
+                Description = "Id mollis consectetur congue egestas egestas suspendisse blandit justo.",
+                Image = "images/assignees.svg"
+            },
+            new FeatureItemModel
+            {
+                Title = "Notifications",
+                Description = "Id mollis consectetur congue egestas egestas suspendisse blandit justo.",
+                Image = "images/notifications.svg"
+            },
+            new FeatureItemModel
+            {
+                Title = "Sections & Subtasks",
+                Description = "Id mollis consectetur congue egestas egestas suspendisse blandit justo.",
+                Image = "images/subtasks.svg"
+            },
+            new FeatureItemModel
+            {
+                Title = "Data Security",
+                Description = "Id mollis consectetur congue egestas egestas suspendisse blandit justo.",
+                Image = "images/security.svg"
+            },
+        ]
+    };
+    
+    var manageWorkViewModel = new ManageWorkViewModel
+    {
+        ManageWorkItems = new List<string>
+        {
+            "Powerful project management",
+            "Transparent work management",
+            "Manage work & focus on the most important tasks",
+            "Track your progress with interactive charts",
+            "Easiest way to track time spent on tasks"
+        }
+    };
+    
+    var downloadViewModel = new DownloadViewModel
+    {
+        AppStoreModels =
+        [
+            new AppStoreModel
+            {
+                Name = "App Store",
+                StarCount = 5,
+                Title = "Editor's Choice",
+                Rating = 4.7,
+                ReviewCount = 187100,
+                Image = "images/appstore.svg"
+            },
+
+            new AppStoreModel
+            {
+                Name = "Google Play",
+                StarCount = 5,
+                Title = "App of the Day",
+                Rating = 4.8,
+                ReviewCount = 30001,
+                Image = "images/googleplay.svg"
+            }
+        ]
+    };
+
+    var workToolViewModel = new WorkToolViewModel
+    {
+        WorkTools = [
+            new WorkToolItemViewModel
+            {
+                Image = "images/tool-1.svg",
+                Description = "Lorem magnis pretium sed curabitur nunc facilisi nunc cursus sagittis."
+            },
+            new WorkToolItemViewModel
+            {
+                Image = "images/tool-2.svg",
+                Description = "Lorem magnis pretium sed curabitur nunc facilisi nunc cursus sagittis."
+            },
+            new WorkToolItemViewModel
+            {
+                Image = "images/tool-3.svg",
+                Description = "Lorem magnis pretium sed curabitur nunc facilisi nunc cursus sagittis."
+            },
+            new WorkToolItemViewModel
+            {
+                Image = "images/tool-4.svg",
+                Description = "Lorem magnis pretium sed curabitur nunc facilisi nunc cursus sagittis."
+            },
+            new WorkToolItemViewModel
+            {
+                Image = "images/tool-5.svg",
+                Description = "Lorem magnis pretium sed curabitur nunc facilisi nunc cursus sagittis."
+            },
+            new WorkToolItemViewModel
+            {
+                Image = "images/tool-6.svg",
+                Description = "Lorem magnis pretium sed curabitur nunc facilisi nunc cursus sagittis."
+            },
+            new WorkToolItemViewModel
+            {
+                Image = "images/tool-7.svg",
+                Description = "Lorem magnis pretium sed curabitur nunc facilisi nunc cursus sagittis."
+            },
+            new WorkToolItemViewModel
+            {
+                Image = "images/tool-8.svg",
+                Description = "Lorem magnis pretium sed curabitur nunc facilisi nunc cursus sagittis."
+            },
+        ]
+    };
+}
+
+@await Html.PartialAsync("Index/_Showcase")
+@await Html.PartialAsync("Index/_Features", featuresVievModel)
+@await Html.PartialAsync("Index/_DarkLight")
+@await Html.PartialAsync("Index/_ManageWork", manageWorkViewModel)
+@await Html.PartialAsync("Index/_Download", downloadViewModel)
+@await Html.PartialAsync("Index/_TopWorkTools", workToolViewModel)
+@await Html.PartialAsync("Index/_Subscribe")

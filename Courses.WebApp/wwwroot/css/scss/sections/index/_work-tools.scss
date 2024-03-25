@@ -1,0 +1,22 @@
+.top-work-tools {
+  @include container;
+  margin-top: 80px;
+  .header {
+    text-align: center;
+    
+    p {
+      color: var(--gray-600);
+    }
+  }
+  
+  .work-tools {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 40px;
+
+    p {
+      color: var(--gray-700);
+    }
+  }
+}

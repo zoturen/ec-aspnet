@@ -1,0 +1,25 @@
+a {
+    @include standard-text;
+    color: var(--theme) !important;
+    text-decoration: none;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.menu-link {
+    color: var(--gray-700) !important;
+    @include text-nav;
+    text-decoration: none;
+    transition: color 0.25s ease-in-out;
+
+    &:hover,
+    &:active,
+    &:focus,
+    .active {
+        color: var(--theme) !important;
+        text-decoration: none;
+    }
+}

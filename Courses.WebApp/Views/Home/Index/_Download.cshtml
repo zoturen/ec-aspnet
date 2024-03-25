@@ -1,0 +1,26 @@
+@model DownloadViewModel
+
+<section class="download">
+    <div class="container">
+        <div><img src="~/images/download-app.svg" alt="our app in smartphone" /></div>
+        <div>
+            <h2 class="h1">Download Our App <br> for Any Devices:</h2>
+            @foreach (var store in Model.AppStoreModels)
+            {
+                <div class="store">
+                    <div class="store-text">
+                        <p class="text-m">@store.Name</p>
+                        @for (var i = 0; i < store.StarCount; i++)
+                        {
+                            <i class="fa-solid fa-star"></i>
+                        }
+                        <h4 class="h4">@store.Title</h4>
+                        <span>rating @store.Rating, @store.ReviewCountText reviews</span>
+                    </div>
+                    <a href="#"><img src="@store.Image" alt="store download"/></a>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
