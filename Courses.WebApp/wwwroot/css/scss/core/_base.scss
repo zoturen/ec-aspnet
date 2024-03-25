@@ -29,3 +29,69 @@ h6, .h6 { @include h6; }
     display: grid;
     grid-template-rows: auto 1fr auto;
 }
+
+.account-layout {
+    @include container;
+    display: flex;
+    height: 100%;
+    
+    .account-nav {
+        padding: 60px 20px;
+        width: 260px;
+        
+        .user {
+            text-align: center;
+            h5 {
+                margin: 10px 0 0;
+            }
+            .avatar {
+                position: relative;
+                image {
+                    height: 120px;
+                    width: 120px;
+                }
+                i {
+                    position: absolute;
+                    bottom: 8%;
+                    right: 25%;
+                    padding: 10px;
+                    background-color: var(--white);
+                    border: 1px solid var(--gray-400);
+                    border-radius: 100%;
+                }
+            }
+        }
+        nav {
+            display: flex;
+            flex-direction: column;
+            margin-top: 40px;
+            
+            a {
+                color: var(--gray-800) !important;
+                padding: 15px 20px;
+                text-decoration: none;
+                border-radius: 10px;
+                i {
+                    margin-right: 20px;
+                }
+                
+                &:hover {
+                    text-decoration: underline;
+                    color: var(--theme) !important;
+                }
+            }
+            
+            .active {
+                background-color: var(--theme);
+                color: var(--white) !important;
+                &:hover {
+                    color: var(--white) !important;
+                }
+            }
+        }
+    }
+    
+    .account-view {
+        flex: 1;
+    }
+}

@@ -152,3 +152,8 @@
         color: var(--white);
     } 
 }
+
+.btn-group {
+    display: flex;
+    gap: 20px;
+}

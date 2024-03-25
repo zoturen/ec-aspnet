@@ -1,0 +1,25 @@
+.account-details {
+  margin-left: 120px;
+  
+  
+  h5 {
+    margin-bottom: 0;
+    color: var(--theme);
+  }
+  
+  h2 {
+    margin-bottom: 0;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 40px;
+  }
+  
+  .basic-info {
+    border-bottom: .6px solid var(--gray-500);
+    
+  }
+}

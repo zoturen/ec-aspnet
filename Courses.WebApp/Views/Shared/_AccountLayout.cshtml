@@ -1,0 +1,24 @@
+@{
+
+    Layout = "_Layout";
+}
+
+
+<div class="account-layout">
+    <div class="account-nav">
+        <div class="user">
+            <div class="avatar">
+                 <img src="/images/unreasonably-happy.svg" alt="your avatar">
+                 <i class="fa-solid fa-arrows-rotate"></i>
+            </div>
+            <h5 class="h5">John Doe</h5>
+            <p class="text-m">john.doe@domain.com</p>
+        </div>
+        <nav>
+            <a href="" class="active"><i class="fa-solid fa-cog"></i>Account Details</a>
+            <a href=""><i class="fa-solid fa-arrow-right-from-bracket"></i>Sign Out</a>
+        </nav>
+    </div>
+    <div class="divider"></div>
+    <div class="account-view">@RenderBody()</div>
+</div>

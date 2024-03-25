@@ -36,6 +36,14 @@
     color: var(--gray-600);
     border: .5px solid var(--gray-600);
   }
+
+  textarea {
+    padding: 10px 20px;
+    background-color: inherit;
+    border-radius: 5px;
+    color: var(--gray-600);
+    border: .5px solid var(--gray-600);
+  }
   
   label {
     margin-bottom: 5px;

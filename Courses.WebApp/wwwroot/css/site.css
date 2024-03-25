@@ -303,6 +303,87 @@ body.dark-mode h6, body.dark-mode .h6 {
   grid-template-rows: auto 1fr auto;
 }
 
+.account-layout {
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  height: 100%;
+}
+@media (min-width: 768px) {
+  .account-layout {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .account-layout {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .account-layout {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .account-layout {
+    max-width: 1320px;
+  }
+}
+.account-layout .account-nav {
+  padding: 60px 20px;
+  width: 260px;
+}
+.account-layout .account-nav .user {
+  text-align: center;
+}
+.account-layout .account-nav .user h5 {
+  margin: 10px 0 0;
+}
+.account-layout .account-nav .user .avatar {
+  position: relative;
+}
+.account-layout .account-nav .user .avatar image {
+  height: 120px;
+  width: 120px;
+}
+.account-layout .account-nav .user .avatar i {
+  position: absolute;
+  bottom: 8%;
+  right: 25%;
+  padding: 10px;
+  background-color: var(--white);
+  border: 1px solid var(--gray-400);
+  border-radius: 100%;
+}
+.account-layout .account-nav nav {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+.account-layout .account-nav nav a {
+  color: var(--gray-800) !important;
+  padding: 15px 20px;
+  text-decoration: none;
+  border-radius: 10px;
+}
+.account-layout .account-nav nav a i {
+  margin-right: 20px;
+}
+.account-layout .account-nav nav a:hover {
+  text-decoration: underline;
+  color: var(--theme) !important;
+}
+.account-layout .account-nav nav .active {
+  background-color: var(--theme);
+  color: var(--white) !important;
+}
+.account-layout .account-nav nav .active:hover {
+  color: var(--white) !important;
+}
+.account-layout .account-view {
+  flex: 1;
+}
+
 a {
   line-height: 160%;
   font-weight: 400;
@@ -511,6 +592,11 @@ body.dark-mode .btn-social {
   color: var(--white);
 }
 
+.btn-group {
+  display: flex;
+  gap: 20px;
+}
+
 .text-input-icon {
   color: var(--gray-500);
   position: relative;
@@ -547,9 +633,25 @@ body.dark-mode .btn-social {
   color: var(--gray-600);
   border: 0.5px solid var(--gray-600);
 }
+.input-group textarea {
+  padding: 10px 20px;
+  background-color: inherit;
+  border-radius: 5px;
+  color: var(--gray-600);
+  border: 0.5px solid var(--gray-600);
+}
 .input-group label {
   margin-bottom: 5px;
   font-weight: bold;
+}
+
+.divider {
+  min-height: 100%;
+  width: 1px;
+  background-color: var(--gray-500);
+}
+body.dark-mode .divider {
+  background-color: var(--gray-700);
 }
 
 header {
@@ -1237,6 +1339,26 @@ body.dark-mode .subscribe form .input-text-group input {
 }
 .signup form button {
   padding: 15px 20px;
+}
+
+.account-details {
+  margin-left: 120px;
+}
+.account-details h5 {
+  margin-bottom: 0;
+  color: var(--theme);
+}
+.account-details h2 {
+  margin-bottom: 0;
+}
+.account-details form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 40px;
+}
+.account-details .basic-info {
+  border-bottom: 0.6px solid var(--gray-500);
 }
 
 /*# sourceMappingURL=site.css.map */
