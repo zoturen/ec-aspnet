@@ -1,12 +1,15 @@
+@using Courses.WebApp.ViewModels.Account
 @{
     Layout = "_AccountLayout";
+    
 }
-
+@model DetailsViewModel
 
 <div class="account-details">
     <h2>Account Details</h2>
-    @await Component.InvokeAsync("BasicInfo")
-     <div class="address">
+    
+    <partial name="_BasicInfo" model="Model.BasicInfo"/>
+    <div class="address">
          <form>
              <h5>Address</h5>
              <div class="input-group">

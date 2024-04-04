@@ -1,0 +1,59 @@
+@model Courses.WebApp.ViewModels.Account.BasicInfoViewModel
+
+
+<div class="basic-info" id="basic-info-partial">
+    <form method="post" onsubmit="updateBasicInfo(event)">
+        <h5>Basic Info</h5>
+        <div class="input-row">
+            <div class="input-group">
+                <label asp-for="FirstName">First name</label>
+                <input asp-for="FirstName">
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="input-group">
+                <label asp-for="LastName">Last name</label>
+                <input asp-for="LastName"/>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="input-row">
+            <div class="input-group">
+                <label asp-for="Email">Email</label>
+                <input asp-for="Email"/>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="input-group">
+                <label asp-for="Phone">Phone</label>
+                <input asp-for="Phone"/>
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="input-group">
+            <label asp-for="Bio">Bio <span>(optional)</span></label>
+            <textarea asp-for="Bio"></textarea>
+        </div>
+        <div class="btn-group">
+            <button class="btn-theme-inverse" type="reset">Cancel</button>
+            <button class="btn-theme">Save changes</button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+    
+    const updateBasicInfo = (e) => {
+        e.preventDefault()
+        const form = new FormData(e.target) 
+        
+        fetch(`@Url.Action("UpdateBasicInfo", "Account")`,{
+            method: "POST",
+            body: form 
+        }).then(res => res.text()).then(html => {
+            
+            const partialForm = document.getElementById("basic-info-partial")
+           partialForm.innerHTML = html
+        }).catch(e => {})
+    }
+    
+</script>
