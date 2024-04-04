@@ -1,4 +1,4 @@
-.text-input-icon {
+.text-input-icon-left {
   color: var(--gray-500);
   position: relative;
   width: 100%;
@@ -13,6 +13,31 @@
     top: 32%;
     bottom: 18%;
     left: 10px;
+  }
+}
+
+.text-input-icon-right {
+  color: var(--gray-500);
+  position: relative;
+  width: 100%;
+  input, select {
+    padding: 15px 45px 15px 15px;
+    border-radius: 5px;
+    border: var(--gray-500) .5px solid;
+    background-color: inherit;
+  }
+  
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  i {
+    position: absolute;
+    top: 32%;
+    bottom: 18%;
+    right: 8%;
   }
 }
 

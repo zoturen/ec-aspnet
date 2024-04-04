@@ -5,40 +5,7 @@
 
 <div class="account-details">
     <h2>Account Details</h2>
-    <div class="basic-info">
-        <form>
-            <h5>Basic Info</h5>
-            <div class="input-row">
-                <div class="input-group">
-                    <label for="details-firstname">First name</label>
-                    <input type="text" id="details-firstname" placeholder="Enter your first name...">
-                </div>
-                <div class="input-group">
-                    <label for="details-lastname">Last name</label>
-                    <input type="text" id="details-lastname" placeholder="Enter your last name...">
-                </div>
-            </div>
-            <div class="input-row">
-                <div class="input-group">
-                    <label for="details-email">Email</label>
-                    <input type="email" id="details-email" placeholder="Enter your first name...">
-                </div>
-                <div class="input-group">
-                    <label for="details-phone">Phone</label>
-                    <input type="text" id="details-phone" placeholder="Enter your phone...">
-                </div>
-            </div>
-            <div class="input-group">
-                <label for="details-bio">Bio <span>(optional)</span></label>
-                <textarea id="details-bio" placeholder="Add a short bio..."></textarea>
-            </div>
-            <div class="btn-group">
-                <button class="btn-theme-inverse">Cancel</button>
-                <button class="btn-theme">Save changes</button>
-            </div>
-            
-        </form>
-    </div>
+    @await Component.InvokeAsync("BasicInfo")
      <div class="address">
          <form>
              <h5>Address</h5>

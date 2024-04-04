@@ -1,22 +1,31 @@
+@model Courses.WebApp.ViewModels.Auth.SignInViewModel
+
 
 <div class="signin">
-    <form>
+    <form asp-controller="Auth" asp-action="SignIn">
         <h2>Welcome Back</h2>
         <p>Dont have an account yet? <a asp-controller="Auth" asp-action="SignUp">Sign up here.</a></p>
-        
-        <div class="input-group">
-            <label for="sign-in-email">Email</label>
-            <input id="sign-in-email" placeholder="Enter your email address" />
+        @if (ViewData.ModelState.TryGetValue("invalid", out var errorMessage))
+        { 
+            <div class="input-group">
+                <span class="text-danger">@errorMessage.Errors.FirstOrDefault()?.ErrorMessage</span>
+            </div>
+        }
+       <div class="input-group">
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
         
         <div class="input-group">
-            <label for="sign-in-password">Password</label>
-            <input id="sign-in-password" placeholder="********" />
+            <label>Password</label>
+            <input asp-for="Password" />
+            <span asp-validation-for="Password" class="text-danger"></span>
         </div>
         
         <div class="input-checkbox-group">
-            <input type="checkbox" id="sign-in-remember-me">
-            <label for="sign-in-remember-me">Remember me</label>
+            <input asp-for="RememberMe">
+            <label asp-for="RememberMe">Remember me</label>
         </div>
         
         <button class="btn-theme">Sign in</button>

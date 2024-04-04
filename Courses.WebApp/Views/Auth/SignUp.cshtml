@@ -1,45 +1,70 @@
+@model Courses.WebApp.ViewModels.Auth.SignUpViewModel
+
 <div class="signup">
-    <form>
+    <form asp-controller="Auth" asp-action="SignUp">
         <h2>Create Account</h2>
         <p>Already have an account? <a asp-controller="Auth" asp-action="SignIn">Sign in here.</a></p>
-        
-        
-        
+
+        @foreach (var modelState in ViewData.ModelState)
+        {
+            foreach (var error in modelState.Value.Errors)
+            {
+                if (modelState.Key.StartsWith("Duplicate"))
+                {
+                    <div class="text-danger">Could not register with that email.</div>
+                }
+            }
+        }
+
         <div class="input-row">
             <div class="input-group">
-                <label for="sign-up-firstname">First name</label>
-                <input id="sign-up-firstname" placeholder="Enter your firstname" />
+                <label asp-for="FirstName">First name</label>
+                <input asp-for="FirstName"/>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
-            
-           <div class="input-group">
-                <label for="sign-up-lastname">Last name</label>
-                <input id="sign-up-lastname" placeholder="Enter your last name" />
-           </div>
+
+            <div class="input-group">
+                <label asp-for="LastName">Last name</label>
+                <input asp-for="LastName"/>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
         </div>
-        
-     
-        
-        
+
         <div class="input-group">
-            <label for="sign-up-email">Email</label>
-            <input id="sign-up-email" placeholder="Enter your email address" />
+            <label asp-for="Email">Email</label>
+            <input asp-for="Email"/>
+            <span asp-validation-for="Email" class="text-danger"></span>
         </div>
-        
+
         <div class="input-group">
-            <label for="sign-up-password">Password</label>
-            <input id="sign-up-password" placeholder="********" type="password" />
+            <label asp-for="Password">Password</label>
+            <input asp-for="Password"/>
+            @foreach (var modelState in ViewData.ModelState)
+            {
+                foreach (var error in modelState.Value.Errors)
+                {
+                    if (modelState.Key.StartsWith("Pass"))
+                    {
+                        <div class="text-danger">@error.ErrorMessage</div>
+                    }
+                }
+            }
         </div>
-        
+
         <div class="input-group">
-            <label for="sign-up-rep-password">Confirm Password</label>
-            <input id="sign-up-rep-password" placeholder="********" type="password" />
+            <label asp-for="ConfirmPassword">Confirm Password</label>
+            <input asp-for="ConfirmPassword"/>
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>
-        
+
         <div class="input-checkbox-group">
-            <input type="checkbox" id="sign-in-remember-me">
-            <label for="sign-in-remember-me">I agree to the <a href="#">Terms</a> & <a href="#">Contitions</a>.</label>
+            <input asp-for="AcceptedTerms"/>
+            <label asp-for="AcceptedTerms">I agree to the <a href="#">Terms</a> & <a href="#">Contitions</a>.</label>
+            <div>
+                <span asp-validation-for="AcceptedTerms" class="text-danger"></span>
+            </div>
         </div>
-        
+
         <button class="btn-theme">Sign up</button>
     </form>
 </div>

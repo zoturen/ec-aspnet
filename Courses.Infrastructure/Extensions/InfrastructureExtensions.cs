@@ -14,6 +14,7 @@ public static class InfrastructureExtensions
         {
             x.UseNpgsql(builder.Configuration["postgres:connectionString"]);
         });
+        
     }
 
     public static void UseInfrastructure(this IHost app)
