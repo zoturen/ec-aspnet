@@ -8,32 +8,6 @@
 <div class="account-details">
     <h2>Account Details</h2>
     
-    <partial name="_BasicInfo" model="Model.BasicInfo"/>
-    <div class="address">
-         <form>
-             <h5>Address</h5>
-             <div class="input-group">
-                 <label for="details-address1">Address line 1</label>
-                 <input type="text" id="details-address1" placeholder="Enter your address line...">
-             </div>
-             <div class="input-group">
-                 <label for="details-address2">Address line 2</label>
-                 <input type="text" id="details-address2" placeholder="Enter your second address line...">
-             </div>
-             <div class="input-row">
-                 <div class="input-group">
-                     <label for="details-postalcode">Postal code</label>
-                     <input type="text" id="details-postalcode" placeholder="Enter your postal code...">
-                 </div>
-                 <div class="input-group">
-                     <label for="details-city">City</label>
-                     <input type="text" id="details-city" placeholder="Enter your city...">
-                 </div>
-             </div>
-             <div class="btn-group">
-                 <button class="btn-theme-inverse">Cancel</button>
-                 <button class="btn-theme">Save changes</button>
-             </div>
-         </form>
-    </div>
+    <partial name="Account/Details/_BasicInfo" model="Model.BasicInfo"/>
+    <partial name="Account/Details/_AddressInfo" model="Model.AddressInfo"/> 
 </div>

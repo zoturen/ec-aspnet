@@ -1,12 +1,12 @@
 using Courses.Infrastructure.Entities;
+using Courses.Infrastructure.Helpers;
 using Courses.WebApp.ViewModels.Auth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace Courses.WebApp.Controllers;
 
-public class AuthController(SignInManager<UserEntity> signInManager, UserManager<UserEntity> userManager) : Controller
+public class AuthController(SignInManager<UserEntity> signInManager, UserManager<UserEntity> userManager, Security security) : Controller
 {
 
 
@@ -25,7 +25,7 @@ public class AuthController(SignInManager<UserEntity> signInManager, UserManager
                 lockoutOnFailure: false);
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Home"); //Or wherever you want to redirect after successful login
+                return RedirectToAction("Index", "Home"); 
             }
             else
             {
@@ -34,7 +34,6 @@ public class AuthController(SignInManager<UserEntity> signInManager, UserManager
             }
         }
 
-        // If we got this far, something failed, redisplay form
         return View(model);
     }
 
@@ -48,7 +47,6 @@ public class AuthController(SignInManager<UserEntity> signInManager, UserManager
     [HttpPost]
     public async Task<IActionResult> SignUp(SignUpViewModel model)
     {
-        Console.WriteLine("post");
         if (ModelState.IsValid)
         {
             try
@@ -83,5 +81,11 @@ public class AuthController(SignInManager<UserEntity> signInManager, UserManager
         }
 
         return View(model);
+    }
+
+    [HttpGet("auth/keys")]
+    public IActionResult GetPublicKeys()
+    {
+        return Ok(security.GetPublicKey());
     }
 }

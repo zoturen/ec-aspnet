@@ -18,6 +18,8 @@ public class BasicInfoViewModel
     [Display(Name = "Phone number", Prompt = "Enter your phone number...")]
     public string? Phone { get; set; }
     [DataType(DataType.MultilineText)]
-    [Display(Name = "Bio", Prompt = "....")]
+    [Display(Name = "Bio", Prompt = "Tell us about your self....")]
     public string? Bio { get; set; }
+
+    public bool UpdatedSuccessfully { get; set; }
 }

@@ -1,6 +1,8 @@
+using System.Net.Http.Headers;
 using Courses.Infrastructure.DAL;
 using Courses.Infrastructure.Entities;
 using Courses.Infrastructure.Extensions;
+using Courses.WebApp.Client;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 
@@ -36,6 +38,22 @@ builder.Services.AddAntiforgery(x =>
 });
 
 
+builder.Services.AddHttpClient("UserApi", client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["apiUrl"] ?? throw new Exception("we did not find any api base url."));
+    client.DefaultRequestHeaders.Accept.Clear();
+    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+});
+
+builder.Services.AddScoped<UserApi>();
+
+builder.Services.AddHttpClient("Api", client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["apiUrl"] ?? throw new Exception("we did not find any api base url."));
+    client.DefaultRequestHeaders.Accept.Clear();
+    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+});
+
 //builder.Services.AddAuthorizationBuilder();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRouting(x => x.LowercaseUrls = true);
@@ -57,13 +75,16 @@ app.UseInfrastructure();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+
+
+app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-app.UseRouting();
-
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
 
 app.Run();
