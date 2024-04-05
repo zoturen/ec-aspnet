@@ -1,0 +1,50 @@
+@model Courses.WebApp.ViewModels.Account.AddressInfoViewModel
+
+<div class="address" id="address-info-partial">
+    <form onsubmit="updateAddressInfo(event)">
+        <h5>Address</h5>
+        <div class="input-group">
+            <label asp-for="Line1">Address line 1</label>
+            <input asp-for="Line1">
+            <span asp-validation-for="Line1" class="text-danger"></span>
+        </div>
+        <div class="input-group">
+            <label asp-for="Line2">Address line 2</label>
+            <input asp-for="Line2">
+        </div>
+        <div class="input-row">
+            <div class="input-group">
+                <label asp-for="PostalCode">Postal code</label>
+                <input asp-for="PostalCode"/>
+                <span asp-validation-for="PostalCode" class="text-danger"></span>
+            </div>
+            <div class="input-group">
+                <label asp-for="City">City</label>
+                <input asp-for="City"/>
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="btn-group">
+            <button class="btn-theme-inverse">Cancel</button>
+            <button class="btn-theme">Save changes</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    
+    const updateAddressInfo = (e) => {
+        e.preventDefault()
+        const form = new FormData(e.target) 
+        
+        fetch(`@Url.Action("UpdateAddressInfo", "Account")`,{
+            method: "POST",
+            body: form 
+        }).then(res => res.text()).then(html => {
+            
+            const partialForm = document.getElementById("address-info-partial")
+           partialForm.innerHTML = html
+        }).catch(e => {})
+    }
+    
+</script>

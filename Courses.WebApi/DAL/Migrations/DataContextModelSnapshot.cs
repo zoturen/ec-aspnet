@@ -146,6 +146,19 @@ namespace Courses.WebApi.DAL.Migrations
                     b.ToTable("CourseProgramDetails");
                 });
 
+            modelBuilder.Entity("Courses.WebApi.Entities.SavedCourseEntity", b =>
+                {
+                    b.Property<int>("CourseId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("text");
+
+                    b.HasKey("CourseId", "UserId");
+
+                    b.ToTable("SavedCourses");
+                });
+
             modelBuilder.Entity("Courses.WebApi.Entities.SubscribeEntity", b =>
                 {
                     b.Property<string>("EmailAddress")

@@ -1,4 +1,5 @@
 using Courses.Infrastructure.DAL;
+using Courses.Infrastructure.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,7 +15,9 @@ public static class InfrastructureExtensions
         {
             x.UseNpgsql(builder.Configuration["postgres:connectionString"]);
         });
-        
+
+        services.AddScoped<Security>();
+
     }
 
     public static void UseInfrastructure(this IHost app)
