@@ -2,6 +2,7 @@ using System.Net.Http.Headers;
 using Courses.Infrastructure.DAL;
 using Courses.Infrastructure.Entities;
 using Courses.Infrastructure.Extensions;
+using Courses.Infrastructure.Services;
 using Courses.WebApp.Client;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
@@ -53,6 +54,8 @@ builder.Services.AddHttpClient("Api", client =>
     client.DefaultRequestHeaders.Accept.Clear();
     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 });
+
+builder.Services.AddScoped<AddressService>();
 
 //builder.Services.AddAuthorizationBuilder();
 builder.Services.AddControllersWithViews();

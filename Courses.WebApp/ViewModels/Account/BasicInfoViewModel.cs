@@ -13,6 +13,7 @@ public class BasicInfoViewModel
     public string LastName { get; set; } = null!;
     [Display(Name = "Email", Prompt = "Enter your email address...")]
     [Required(ErrorMessage = "You must enter a email address.")]
+    [DataType(DataType.EmailAddress)]
     public string Email { get; set; } = null!;
     [Required(ErrorMessage = "Enter you phone number.")]
     [Display(Name = "Phone number", Prompt = "Enter your phone number...")]
