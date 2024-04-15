@@ -1,6 +1,9 @@
 using System.Net;
 using System.Security.Cryptography;
+using System.Text.Json.Serialization;
+using Courses.WebApi.Authorization;
 using Courses.WebApi.DAL;
+using Courses.WebApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +26,11 @@ public static class AppExtensions
         services.AddSwaggerGen();
 
         services.AddHttpClient();
+        services.AddControllers()
+            .AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+            });
 
         var serviceProvider = services.BuildServiceProvider();
         var httpClientFactory = serviceProvider.GetRequiredService<IHttpClientFactory>();
@@ -62,7 +70,13 @@ public static class AppExtensions
                 policy.AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme);
                 policy.RequireAuthenticatedUser();
             });
-        }); 
+            options.AddPolicy("APIKEY", policy =>
+            {
+                policy.AddRequirements(new ApiKeyRequirement());
+            });
+        });
+        services.AddSingleton<IAuthorizationHandler, ApiKeyHandler>();
+        services.AddScoped<CourseService>();
     }
     
     
@@ -92,6 +106,8 @@ public static class AppExtensions
             Console.WriteLine("hello");
             Console.WriteLine();
             return "hello";
-        }).RequireAuthorization(JwtBearerDefaults.AuthenticationScheme);
+        }).RequireAuthorization("APIKEY", JwtBearerDefaults.AuthenticationScheme);
+
+        app.MapControllers();
     }
 }

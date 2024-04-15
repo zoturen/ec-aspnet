@@ -14,5 +14,8 @@ public class DataContext(DbContextOptions<DataContext> opts) : DbContext(opts)
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<SavedCourseEntity>().HasKey(x => new {x.CourseId, x.UserId});
+
+        modelBuilder.Entity<CourseEntity>().Property(e => e.Category)
+            .HasConversion<string>();
     }
 }

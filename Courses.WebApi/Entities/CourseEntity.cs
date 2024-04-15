@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using Courses.Shared.Models;
 
 namespace Courses.WebApi.Entities;
 
@@ -10,9 +11,10 @@ public class CourseEntity
     // Arrays
     public string[] Tags { get; set; } = null!;
     public string[] Topics { get; set; } = null!;
-    
-    
+
+    public Categories Category { get; set; } 
     public string Title { get; set; } = null!;
+    public string ImageUrl { get; set; } = null!;
     public string SubTitle { get; set; } = null!;
     public string Description { get; set; } = null!;
     public decimal ReviewCount { get; set; }
