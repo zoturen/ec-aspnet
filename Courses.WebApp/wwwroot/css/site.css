@@ -32,6 +32,10 @@
   color: var(--danger);
 }
 
+.text-theme {
+  color: var(--theme);
+}
+
 html, body {
   line-height: 160%;
   font-weight: 400;
@@ -305,6 +309,22 @@ body.dark-mode h6, body.dark-mode .h6 {
   height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
+}
+
+.animate-success i {
+  font-size: 26px;
+  color: var(--success);
+  animation: spintosuccess 0.5s linear;
+}
+@keyframes spintosuccess {
+  from {
+    color: var(--theme);
+    transform: rotate(0deg);
+  }
+  to {
+    color: var(--success);
+    transform: rotate(360deg);
+  }
 }
 
 .account-layout {
@@ -685,6 +705,12 @@ body.dark-mode .btn-social {
   -moz-appearance: none;
   appearance: none;
 }
+body.dark-mode .text-input-icon-right select {
+  color: var(--white);
+}
+body.dark-mode .text-input-icon-right input {
+  color: var(--white);
+}
 .text-input-icon-right i {
   position: absolute;
   top: 32%;
@@ -723,6 +749,28 @@ body.dark-mode .btn-social {
   font-weight: bold;
 }
 
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 60px;
+}
+.pagination .active {
+  background-color: var(--theme);
+  color: var(--white);
+}
+.pagination .item {
+  padding: 15px 20px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+.pagination .item:hover {
+  background-color: var(--gray-400);
+  cursor: pointer;
+}
+
 .divider {
   min-height: 100%;
   width: 1px;
@@ -730,6 +778,113 @@ body.dark-mode .btn-social {
 }
 body.dark-mode .divider {
   background-color: var(--gray-700);
+}
+
+.course-items {
+  margin-right: auto;
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+@media (min-width: 768px) {
+  .course-items {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .course-items {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .course-items {
+    max-width: 1140px;
+  }
+}
+@media (min-width: 1400px) {
+  .course-items {
+    max-width: 1320px;
+  }
+}
+.course-items .course-item {
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+body.dark-mode .course-items .course-item {
+  background-color: var(--gray-850);
+}
+.course-items .course-item .best-seller {
+  position: absolute;
+  left: 20px;
+  top: 15px;
+  padding: 1px 5px;
+  background-color: #22C55E;
+  color: var(--white);
+  border-radius: 5px;
+}
+.course-items .course-item .bookmark {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background-color: var(--white);
+  padding: 8px 15px;
+  border-radius: 100%;
+}
+body.dark-mode .course-items .course-item .bookmark {
+  background-color: var(--gray-850);
+  color: var(--white);
+}
+.course-items .course-item .bookmark:hover {
+  background-color: var(--gray-300);
+  cursor: pointer;
+}
+body.dark-mode .course-items .course-item .bookmark:hover {
+  color: var(--gray-300);
+  background-color: var(--gray-800);
+}
+.course-items .course-item .bookmarked {
+  background-color: var(--gray-700);
+  color: var(--white);
+}
+.course-items .course-item h4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.course-items .course-item .upper-text {
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--gray-800);
+}
+.course-items .course-item .text {
+  padding: 20px;
+  color: var(--gray-600);
+}
+.course-items .course-item .price {
+  display: flex;
+  gap: 10px;
+  font-size: 20px;
+}
+.course-items .course-item .price .regular-price {
+  color: var(--theme);
+}
+.course-items .course-item .price .regular-price-grayed {
+  color: var(--gray-700);
+}
+.course-items .course-item .price .discount-price {
+  color: var(--danger);
+}
+.course-items .course-item .meta-info {
+  padding-top: 20px;
+  display: flex;
+  gap: 40px;
+  color: var(--gray-600) !important;
+}
+.course-items .course-item img {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width: 100%;
+  height: 200px;
 }
 
 header {
@@ -1443,6 +1598,17 @@ body.dark-mode .subscribe form .input-text-group input {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.courses .work-with-us {
+  margin-top: 120px;
+  margin-bottom: 60px;
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--gray-100);
+  padding: 60px 30px;
+}
+.courses .work-with-us .btn-theme {
+  width: 100px;
 }
 
 /*# sourceMappingURL=site.css.map */

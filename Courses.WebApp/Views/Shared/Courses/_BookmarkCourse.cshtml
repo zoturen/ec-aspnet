@@ -1,0 +1,9 @@
+@model Courses.WebApp.ViewModels.Course.BookmarkCourseViewModel
+
+
+<div id="bookmark-@Model.CourseId" class="bookmark @if (Model.IsBookmarked) {<text>bookmarked</text> }" onclick="toggleBookmark(event, @Model.CourseId, @Model.IsBookmarked.ToString().ToLower())">
+    <i class="fa-regular fa-bookmark"></i>
+</div>
+
+
+

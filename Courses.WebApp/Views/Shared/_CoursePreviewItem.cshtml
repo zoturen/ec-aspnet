@@ -1,0 +1,44 @@
+@using Courses.WebApp.ViewModels.Course
+@model Courses.WebApp.ViewModels.Course.PreviewCourseViewModel
+@{
+    var bookmarkModel = new BookmarkCourseViewModel
+    {
+        IsBookmarked = Model.IsBookmarked,
+        CourseId = Model.Id
+    };
+}
+
+<div class="course-item">
+    <img src="@Model.ImageUrl" alt="image">
+    <div class="best-seller">
+        Best Seller
+    </div>
+   @await Html.PartialAsync("Courses/_BookmarkCourse", bookmarkModel) 
+    <div class="text">
+        <div class="upper-text">
+            <h4 class="h4">@Model.Title</h4>
+            <p>By @Model.Author</p>
+
+            <div class="price">
+                @if (Model.DiscountPrice > 0)
+                {
+                    <span class="discount-price">$@Model.DiscountPrice</span>
+                    <span class="regular-price-grayed">$@Model.Price</span>
+                }
+                else
+                {
+                    <span class="regular-price">$@Model.Price</span>
+                }
+            </div>
+        </div>
+        <div class="meta-info">
+            <div>
+                <i class="fa-regular fa-clock"></i> <span>@Model.HoursOfContent hours</span>
+            </div>
+            <div>
+                <i class="fa-regular fa-thumbs-up"></i> <span>@Model.ApprovalRate (@Model.RateCount)</span>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,3 +1,4 @@
+@model Courses.WebApp.ViewModels.Course.CourseViewModel
 @{
     Layout = "_BreadcrumbLayout";
 }
@@ -5,27 +6,30 @@
 <div class="courses">
     <div class="top-bar">
         <h2>Courses</h2>
-        <div class="input-row">
+        <form id="course-selector-form" class="input-row">
             <div class="text-input-icon-right">
                 <i class="fa-solid fa-chevron-down"></i>
-                <select>
-                    <option value="">All categories</option>
-                    <option value="web">Web</option>
-                    <option value="web1">Web1</option>
-                    <option value="web2">Web2</option>
-                    <option value="web3">Web3</option>
-                    <option value="web4">Web4</option>
-                </select>
+                @Html.DropDownList("category", Model.Categories, "All Categories", new { onchange = "this.form.submit()" })
+
             </div>
-            
+
             <div class="text-input-icon-right">
-                <input type="text" placeholder="Search courses">
+                <input name="searchString" asp-for="CoursePreview.Filter" type="text" placeholder="Search courses">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
-        </div>
+        </form>
     </div>
+
+    @await Component.InvokeAsync("CoursePreviewGrid", Model.CoursePreview)
     
-    <div class="course-items">
-        <div class="course-item"></div>
+    <div class="work-with-us">
+        <div>
+            <p class="text-lead">Ready to get started?</p>
+            <h1 class="h1">Take Your <span class="text-theme">Skills</span> to the <br>Next Level</h1>
+            <a href="" class="btn-theme">Work with us</a>
+        </div>
+        <img src="images/next-level_vec.svg" alt="next level vector graphics">
     </div>
+
 </div>
+

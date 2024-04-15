@@ -1,0 +1,55 @@
+@model Courses.WebApp.ViewModels.Course.CourseGridViewModel
+
+@{
+   
+}
+
+<div class="course-items">
+    @foreach (var coursePreview in Model.PreviewCourseItems)
+    {
+        @await Html.PartialAsync("_CoursePreviewItem", coursePreview);
+    }
+</div>
+
+<div class="pagination">
+    <i class="fa-solid fa-chevron-left item" onclick="previousPage()"></i>
+    @if (Model.CurrentPage > 1)
+    {
+    <span class="item" onclick="previousPage()">
+                @(Model.CurrentPage - 1)
+            </span>
+    }
+
+    <span class="item active">
+            @Model.CurrentPage
+        </span>
+
+    @if (Model.CurrentPage < Model.TotalPages)
+    {
+    <span class="item" onclick="nextPage()">
+                @(Model.CurrentPage + 1)
+            </span>
+    }
+    <i class="fa-solid fa-chevron-right item" onclick="nextPage()"></i>
+</div>
+
+<script>
+        const form = document.getElementById('course-selector-form')
+        const input = document.createElement('input')
+        input.type = 'hidden'
+        input.name = 'pageNumber'
+        form.appendChild(input);
+        const nextPage = () => {
+            if (@Model.CurrentPage < @Model.TotalPages) {
+                input.value = @Model.CurrentPage + 1
+                form.submit()
+            }
+        }
+
+        const previousPage = () => {
+            if (@Model.CurrentPage > 1) {
+                input.value = @Model.CurrentPage - 1
+                form.submit()
+            }
+        }
+    </script>

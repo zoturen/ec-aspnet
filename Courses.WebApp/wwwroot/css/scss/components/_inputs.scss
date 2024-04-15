@@ -31,6 +31,16 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+
+    body.dark-mode & {
+      color: var(--white);
+    }
+  }
+  
+  input {
+    body.dark-mode & {
+      color: var(--white);
+    }
   }
 
   i {
@@ -60,6 +70,8 @@
     border-radius: 5px;
     color: var(--gray-600);
     border: .5px solid var(--gray-600);
+
+   
   }
 
   textarea {
@@ -73,5 +85,31 @@
   label {
     margin-bottom: 5px;
     font-weight: bold;
+  }
+}
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 60px;
+
+ 
+  .active {
+    background-color: var(--theme);
+    color: var(--white);
+  }
+  
+  .item {
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 20px;
+    
+    &:hover {
+      background-color: var(--gray-400);
+      cursor: pointer;
+    }
   }
 }
