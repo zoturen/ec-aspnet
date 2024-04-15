@@ -9,18 +9,22 @@ namespace Courses.WebApp.Client;
 public class UserApi
 {
     private readonly Security _security;
+    private readonly IConfiguration _configuration;
 
     private readonly HttpClient _client;
 
-    public UserApi(IHttpClientFactory httpClientFactory, Security security)
+    public UserApi(IHttpClientFactory httpClientFactory, Security security, IConfiguration configuration)
     {
         _security = security;
+        _configuration = configuration;
         _client = httpClientFactory.CreateClient("UserApi");
     }
 
 
     public HttpClient GetClient(HttpContext context)
     {
+        var apikey = _configuration["apikey"] ?? throw new Exception("specify a apikey in appsettings: apikey");
+        _client.DefaultRequestHeaders.Add("x-api-key", apikey);
         _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", GetAccessToken(context));
         return _client;
     }
@@ -31,6 +35,12 @@ public class UserApi
         try
         {
             var token = context?.Request.Cookies["AccessToken"];
+            
+            if (token != null && context?.User.Identity is {IsAuthenticated: false} && token.Length > 0)
+            {
+                context.Response.Cookies.Delete("AccessToken");
+                return null;
+            }
             if (string.IsNullOrEmpty(token))
             {
                 token = SetAccessToken(context);
@@ -72,12 +82,17 @@ public class UserApi
 
     private string? SetAccessToken(HttpContext context)
     {
+        
         var userClaims = context?.User;
         if (userClaims is null)
         {
             return null;
         }
 
+        if (userClaims.Identity is {IsAuthenticated: false})
+        {
+            return null;
+        }
         var token = _security.GenerateAccessToken(userClaims);
 
         if (token is null)
