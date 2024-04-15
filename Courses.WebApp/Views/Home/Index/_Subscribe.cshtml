@@ -1,37 +1,37 @@
-
-<section class="subscribe">
-    <form action="">
+@model SubscribeViewModel
+<section id="subscribe-partial" class="subscribe">
+    <form onsubmit="subscribe(event)">
         <h2 class="h1">Don't Want to Miss Anything? <img src="images/arrows.svg" alt="just a cool arrow"/></h2>
         <div class="signup-choices">
             <h5 class="h5">Sign up for <br>Newsletters</h5>
             <div class="checkboxes">
                 <div class="checkbox-group">
                     <div class="checkbox">
-                        <input id="daily-checkbox" type="checkbox"/>
+                        <input id="daily-checkbox" asp-for="DailyNewsletter" type="checkbox"/>
                         <label for="daily-checkbox" class="text-s">Daily Newsletter</label>
                     </div>
                     <div class="checkbox">
-                        <input id="event-checkbox" type="checkbox"/>
+                        <input id="event-checkbox" asp-for="EventUpdates" type="checkbox"/>
                         <label for="event-checkbox" class="text-s">Event Updates</label>
                     </div>
                 </div>
                 <div class="checkbox-group">
                     <div class="checkbox">
-                        <input id="advertising-checkbox" type="checkbox"/>
+                        <input id="advertising-checkbox" asp-for="AdvertisingUpdates" type="checkbox"/>
                         <label for="advertising-checkbox" class="text-s">Advertising Updates</label>
                     </div>
                     <div class="checkbox">
-                        <input id="startups-checkbox" type="checkbox"/>
+                        <input id="startups-checkbox" asp-for="StartupsWeekly" type="checkbox"/>
                         <label for="startups-checkbox" class="text-s">Startups Weekly</label>
                     </div>
                 </div>
                 <div class="checkbox-group">
                     <div class="checkbox">
-                        <input id="week-checkbox" type="checkbox"/>
+                        <input id="week-checkbox" asp-for="WeekInReview" type="checkbox"/>
                         <label for="week-checkbox" class="text-s">Week in Review</label>
                     </div>
                     <div class="checkbox">
-                        <input id="podcasts-checkbox" type="checkbox"/>
+                        <input id="podcasts-checkbox" asp-for="Podcasts" type="checkbox"/>
                         <label for="podcasts-checkbox" class="text-s">Podcasts</label>
                     </div>
                 </div>
@@ -39,11 +39,34 @@
         </div>
         <div class="input-text-group">
             <div class="text-input-icon-left">
-                <input type="text" placeholder="Your Email" />
+                <input type="text" placeholder="Your Email" asp-for="EmailAddress" />
                 <i class="fa-regular fa-envelope"></i>
             </div>
-            <button type="submit" class="btn-theme">Subscribe*</button>
+            <button class="btn-theme">Subscribe*</button>
         </div>
+            <span asp-validation-for="EmailAddress" class="text-danger"></span>
         <p class="text-s">* Yes I agree to the <a href="#">terms</a> and <a href="#">privacy policy</a>.</p>
+        @if (Model.Successful)
+        {
+        <div class="animate-success">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        }
     </form>
 </section>
+
+<script>
+    const subscribe = (e) => {
+        e.preventDefault()
+        const form = new FormData(e.target)
+
+        fetch(`@Url.Action("Subscribe", "Home")`,{
+            method: "POST",
+            body: form
+        }).then(res => res.text()).then(html => {
+
+            const partialForm = document.getElementById("subscribe-partial")
+            partialForm.innerHTML = html
+        }).catch(e => {})
+    }
+</script>

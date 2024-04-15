@@ -127,6 +127,8 @@
             },
         ]
     };
+
+    var subscribeViewModel = new SubscribeViewModel();
 }
 
 @await Html.PartialAsync("Index/_Showcase")
@@ -135,4 +137,4 @@
 @await Html.PartialAsync("Index/_ManageWork", manageWorkViewModel)
 @await Html.PartialAsync("Index/_Download", downloadViewModel)
 @await Html.PartialAsync("Index/_TopWorkTools", workToolViewModel)
-@await Html.PartialAsync("Index/_Subscribe")
+@await Html.PartialAsync("Index/_Subscribe", subscribeViewModel)
