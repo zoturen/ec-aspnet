@@ -77,6 +77,7 @@ public static class AppExtensions
         });
         services.AddSingleton<IAuthorizationHandler, ApiKeyHandler>();
         services.AddScoped<CourseService>();
+        services.AddScoped<NewsletterService>();
     }
     
     
