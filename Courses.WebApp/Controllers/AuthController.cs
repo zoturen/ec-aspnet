@@ -7,9 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Courses.WebApp.Controllers;
 
 public class AuthController(SignInManager<UserEntity> signInManager, UserManager<UserEntity> userManager, Security security) : Controller
-{
-
-
+{ 
     public IActionResult SignIn()
     {
         var model = new SignInViewModel();
@@ -81,6 +79,13 @@ public class AuthController(SignInManager<UserEntity> signInManager, UserManager
         }
 
         return View(model);
+    }
+
+    public new async Task<IActionResult> SignOut()
+    {
+        await signInManager.SignOutAsync();
+        Response.Cookies.Delete("AccessToken");
+        return RedirectToAction("Index", "Home");
     }
 
     [HttpGet("auth/keys")]
