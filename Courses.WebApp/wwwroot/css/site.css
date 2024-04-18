@@ -447,6 +447,11 @@ body.dark-mode .account-layout .account-nav .user .avatar i:hover {
     max-width: 1320px;
   }
 }
+.breadcrumb-layout .breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
 a {
   line-height: 160%;

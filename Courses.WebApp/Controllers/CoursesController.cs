@@ -1,5 +1,6 @@
 using Courses.Infrastructure.Client;
 using Courses.Shared.Models.Requests;
+using Courses.WebApp.Attributes;
 using Courses.WebApp.ViewModels.Course;
 using Courses.WebApp.Views.Shared.Components.CoursePreviewGrid;
 using Microsoft.AspNetCore.Authorization;
@@ -11,6 +12,7 @@ namespace Courses.WebApp.Controllers;
 [Authorize]
 public class CoursesController(UserApi userApi) : Controller
 {
+    [Breadcrumb(Name = "Courses", ParentAction = "Index", ParentController = "Home")]
     public async Task<IActionResult> Index(string? category, string? searchString, int pageNumber, CourseViewModel? model)
     {
         var client = userApi.GetClient(HttpContext);

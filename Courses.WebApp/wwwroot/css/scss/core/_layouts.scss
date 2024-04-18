@@ -86,4 +86,10 @@
 
 .breadcrumb-layout {
   @include container;
+  
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 }
