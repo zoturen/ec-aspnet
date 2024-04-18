@@ -1,6 +1,6 @@
 using System.Text;
+using Courses.Infrastructure.Client;
 using Courses.Shared.Models.Responses;
-using Courses.WebApp.Client;
 using Courses.WebApp.ViewModels.Course;
 using Microsoft.AspNetCore.Mvc;
 

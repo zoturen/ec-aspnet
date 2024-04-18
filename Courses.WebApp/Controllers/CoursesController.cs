@@ -1,5 +1,5 @@
+using Courses.Infrastructure.Client;
 using Courses.Shared.Models.Requests;
-using Courses.WebApp.Client;
 using Courses.WebApp.ViewModels.Course;
 using Courses.WebApp.Views.Shared.Components.CoursePreviewGrid;
 using Microsoft.AspNetCore.Authorization;

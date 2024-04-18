@@ -1,10 +1,11 @@
 using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Headers;
-using System.Security.Claims;
 using Courses.Infrastructure.Helpers;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 
-namespace Courses.WebApp.Client;
+namespace Courses.Infrastructure.Client;
 
 public class UserApi
 {

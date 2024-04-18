@@ -1,4 +1,4 @@
-using Courses.WebApp.Client;
+using Courses.Infrastructure.Client;
 using Courses.WebApp.ViewModels.Index;
 using Microsoft.AspNetCore.Mvc;
 
