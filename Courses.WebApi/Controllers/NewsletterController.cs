@@ -1,11 +1,13 @@
 using Courses.Shared.Models.Requests;
 using Courses.WebApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Courses.WebApi.Controllers;
 
 [ApiController]
 [Route("newsletter")]
+[Authorize(Policy = "APIKEY")]
 public class NewsletterController(NewsletterService newsletterService) : ControllerBase
 {
     [HttpPost]

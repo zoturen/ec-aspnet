@@ -1,14 +1,16 @@
-
 using System.Security.Claims;
 using Courses.Shared.Models;
 using Courses.Shared.Models.Requests;
 using Courses.WebApi.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Courses.WebApi.Controllers;
 
 [ApiController]
 [Route("courses")]
+[Authorize(Policy = "APIKEY", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 public class CoursesController(CourseService courseService) : ControllerBase
 {
     [HttpPost]
