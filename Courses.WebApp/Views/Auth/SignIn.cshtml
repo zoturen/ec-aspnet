@@ -11,7 +11,7 @@
                 <span class="text-danger">@errorMessage.Errors.FirstOrDefault()?.ErrorMessage</span>
             </div>
         }
-       <div class="input-group">
+        <div class="input-group">
             <label asp-for="Email">Email</label>
             <input asp-for="Email" />
             <span asp-validation-for="Email" class="text-danger"></span>
@@ -32,3 +32,29 @@
         <a href="" class="forgot-pw">Forgot your password?</a>
     </form>
 </div>
+
+<script>
+    const email = document.querySelector('[name="Email"]');
+    const password = document.querySelector('[name="Password"]')
+    const inputs = [email, password];
+    inputs.forEach(function(input) {
+        input.addEventListener("change", function() {
+            const errorSpan = document.querySelector(`span[data-valmsg-for='${input.name}']`);
+            if (input.value.trim() === '') {
+                errorSpan.innerHTML = input.getAttribute('data-val-required');
+            } else {
+                errorSpan.innerHTML = '';
+            }
+        });
+    });
+
+    email.addEventListener("change", function() {
+        const emailErrorSpan = document.querySelector(`span[data-valmsg-for='Email']`);
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(email.value)) {
+            emailErrorSpan.innerHTML = email.getAttribute('data-val-required')
+        } else {
+            emailErrorSpan.innerHTML = '';
+        }
+    });
+</script>

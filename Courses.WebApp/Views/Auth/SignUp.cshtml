@@ -1,7 +1,7 @@
 @model Courses.WebApp.ViewModels.Auth.SignUpViewModel
 
 <div class="signup">
-    <form asp-controller="Auth" asp-action="SignUp">
+    <form id="reg-form" asp-controller="Auth" asp-action="SignUp">
         <h2>Create Account</h2>
         <p>Already have an account? <a asp-controller="Auth" asp-action="SignIn">Sign in here.</a></p>
 
@@ -68,3 +68,54 @@
         <button class="btn-theme">Sign up</button>
     </form>
 </div>
+<script>
+
+   const firstName = document.querySelector('[name="FirstName"]');
+   const lastName = document.querySelector('[name="LastName"]');
+   const email = document.querySelector('[name="Email"]');
+   const password = document.querySelector('[name="Password"]')
+   const confirmPassword = document.querySelector('[name="ConfirmPassword"]');
+   const acceptedTerms = document.querySelector('[name="AcceptedTerms"]');
+
+   const inputs = [firstName, lastName, email, confirmPassword];
+
+   inputs.forEach(function(input) {
+       input.addEventListener("change", function() {
+           const errorSpan = document.querySelector(`span[data-valmsg-for='${input.name}']`);
+           if (input.value.trim() === '') {
+               errorSpan.innerHTML = input.getAttribute('data-val-required');
+           } else {
+               errorSpan.innerHTML = '';
+           }
+       });
+   });
+
+   email.addEventListener("change", function() {
+       const emailErrorSpan = document.querySelector(`span[data-valmsg-for='Email']`);
+       const emailRegex = /^[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+       if (!emailRegex.test(email.value)) {
+           emailErrorSpan.innerHTML = email.getAttribute('data-val-required') 
+       } else {
+           emailErrorSpan.innerHTML = '';
+       }
+   });
+
+
+   confirmPassword.addEventListener("change", function(){
+       const confirmPasswordErrorSpan = document.querySelector(`span[data-valmsg-for='ConfirmPassword']`);
+       if (password.value !== confirmPassword.value) {
+           confirmPasswordErrorSpan.innerHTML = confirmPassword.getAttribute('data-val-required') 
+       } else {
+           confirmPasswordErrorSpan.innerHTML = '';
+       }
+   });
+
+   acceptedTerms.addEventListener("change", function() {
+       const acceptedTermsErrorSpan = document.querySelector(`span[data-valmsg-for='AcceptedTerms']`);
+       if (!acceptedTerms.checked) {
+           acceptedTermsErrorSpan.innerHTML = acceptedTerms.getAttribute('data-val-required') 
+       } else {
+           acceptedTermsErrorSpan.innerHTML = '';
+       }
+   });
+</script>

@@ -38,6 +38,23 @@
 </div>
 
 <script>
+
+    const line1 = document.querySelector('[name="Line1"]');
+    const postalCode = document.querySelector('[name="PostalCode"]');
+    const city = document.querySelector('[name="City"]');
+
+    const addressInputs = [line1, postalCode, city];
+
+    addressInputs.forEach(function(input) {
+        input.addEventListener("change", function() {
+            const errorSpan = document.querySelector(`span[data-valmsg-for='${input.name}']`);
+            if (input.value.trim() === '') {
+                errorSpan.innerHTML = input.getAttribute('data-val-required');
+            } else {
+                errorSpan.innerHTML = '';
+            }
+        });
+    });
     
     const updateAddressInfo = (e) => {
         e.preventDefault()

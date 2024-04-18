@@ -45,6 +45,34 @@
 </div>
 
 <script>
+
+    const firstName = document.querySelector('[name="FirstName"]');
+    const lastName = document.querySelector('[name="LastName"]');
+    const email = document.querySelector('[name="Email"]');
+    const phone = document.querySelector('[name="Phone"]');
+
+    const basicInputs = [firstName, lastName, email, phone];
+
+    basicInputs.forEach(function(input) {
+        input.addEventListener("change", function() {
+            var errorSpan = document.querySelector(`span[data-valmsg-for='${input.name}']`);
+            if (input.value.trim() === '') {
+                errorSpan.innerHTML = input.getAttribute('data-val-required');
+            } else {
+                errorSpan.innerHTML = '';
+            }
+        });
+    });
+
+    email.addEventListener("change", function() {
+        const emailErrorSpan = document.querySelector(`span[data-valmsg-for='Email']`);
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(email.value)) {
+            emailErrorSpan.innerHTML = email.getAttribute('data-val-required')
+        } else {
+            emailErrorSpan.innerHTML = '';
+        }
+    });
     
     const updateBasicInfo = (e) => {
         e.preventDefault()
@@ -60,4 +88,5 @@
         }).catch(e => {})
     }
     
+
 </script>
