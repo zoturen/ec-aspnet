@@ -1,6 +1,11 @@
+@using Courses.Infrastructure.Entities
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<UserEntity> userManager;
+
 @{
 
     Layout = "_Layout";
+    var user = await userManager.GetUserAsync(User);
 }
 
 
@@ -8,11 +13,11 @@
     <div class="account-nav">
         <div class="user">
             <div class="avatar">
-                 <img src="/images/unreasonably-happy.svg" alt="your avatar">
-                 <i class="fa-solid fa-arrows-rotate"></i>
+                <img src="/images/@user.AvatarUrl" alt="your avatar">
+                <i onclick="changeAvatar()" id="change-avatar-btn" class="fa-solid fa-arrows-rotate"></i>
             </div>
-            <h5 class="h5">John Doe</h5>
-            <p class="text-m">john.doe@domain.com</p>
+            <h5 class="h5">@user.FirstName @user.LastName</h5>
+            <p class="text-m">@user.Email</p>
         </div>
         <nav>
             <a href="" class="active"><i class="fa-solid fa-cog"></i>Account Details</a>
@@ -22,3 +27,21 @@
     <div class="divider"></div>
     <div class="account-view">@RenderBody()</div>
 </div>
+
+<script>
+    const changeAvatar = () => {
+        const input = document.createElement('input');
+        input.type = 'file';
+
+        input.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            let formData = new FormData()
+            formData.append("file", file)
+            fetch('@Url.Action("ChangeAvatar", "Account")', {
+                method: 'POST',
+                body: formData
+            })
+        })
+        input.click(); 
+    }
+</script>

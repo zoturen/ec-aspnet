@@ -32,7 +32,7 @@
     @{
         if (Model.IsAuthenticated)
         {
-            <a asp-controller="Account" asp-action="Details" class="btn-avatar"><img src="@Model.User?.AvatarUrl" alt="user avatar"/></a>
+            <a asp-controller="Account" asp-action="Details" class="btn-avatar"><img src="/images/@Model.User?.AvatarUrl" alt="user avatar"/></a>
         }
         else
         {

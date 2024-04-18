@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Courses.WebApp.Controllers;
 
 [Authorize]
-public class AccountController(UserManager<UserEntity> userManager, AddressService addressService) : Controller
+public class AccountController(UserManager<UserEntity> userManager, AddressService addressService, AccountService accountService) : Controller
 {
     public async Task<IActionResult> Details()
     {
@@ -86,5 +86,18 @@ public class AccountController(UserManager<UserEntity> userManager, AddressServi
         }
 
         return PartialView("Account/Details/_AddressInfo", model);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> ChangeAvatar(IFormFile file)
+    {
+        var redirectUrl = Url.Action("Details", "Account") ?? "account/details";
+        if (file is null || file.Length == 0) // TODO: we should validate if the file actually is a image.
+                                              //       One way would be to look at the header and match the bytes for a real image file.
+        {
+            return Redirect(redirectUrl);
+        }
+        await accountService.ChangeAvatar(User.FindFirstValue(ClaimTypes.NameIdentifier)!, file);
+        return Redirect(redirectUrl); // TODO: should somehow handle error. Maybe a Toast?
     }
 }

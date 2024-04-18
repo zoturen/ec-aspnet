@@ -163,7 +163,7 @@
     height: 60px;
     display: inline-block;
     position: relative;
-
+    
     &::after {
         content: "";
         position: absolute;
@@ -184,5 +184,6 @@
         display: block;
         width: 60px;
         height: 60px;
+        border-radius: 50%;
     }
 }

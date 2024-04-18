@@ -1,5 +1,6 @@
 using Courses.Infrastructure.DAL;
 using Courses.Infrastructure.Helpers;
+using Courses.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -17,6 +18,7 @@ public static class InfrastructureExtensions
         });
 
         services.AddScoped<Security>();
+        services.AddScoped<AccountService>();
 
     }
 
