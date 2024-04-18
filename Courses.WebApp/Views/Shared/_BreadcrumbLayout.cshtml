@@ -1,9 +1,28 @@
-
 @{
     Layout = "_Layout";
 }
 
 <div class="breadcrumb-layout">
-    <div class="breadcrumbs">heheheh</div>
+    <div class="breadcrumbs">
+        @if (ViewBag.Breadcrumbs != null)
+        {
+            var index = 0;
+            foreach (var breadcrumb in ViewBag.Breadcrumbs)
+            {
+                if (index == 0)
+                {
+                    <i class="fa-solid fa-house"></i>
+                }
+
+                <a href="@Html.Raw(breadcrumb.Url)">@breadcrumb.Name</a>
+
+                if (index != ViewBag.Breadcrumbs.Count - 1)
+                {
+                    <i class="fa-solid fa-chevron-right"></i>
+                }
+                index++;
+            }
+        }
+    </div>
     <div class="content">@RenderBody()</div>
 </div>

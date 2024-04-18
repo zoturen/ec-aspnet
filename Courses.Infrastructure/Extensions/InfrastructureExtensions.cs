@@ -68,8 +68,7 @@ public static class InfrastructureExtensions
 
         builder.Services.AddScoped<AddressService>();
         
-        builder.Services.AddControllersWithViews();
-        builder.Services.AddRouting(x => x.LowercaseUrls = true);
+        
 
 
         services.AddScoped<Security>();

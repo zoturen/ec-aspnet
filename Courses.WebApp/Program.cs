@@ -1,21 +1,22 @@
-using System.Net.Http.Headers;
-using Courses.Infrastructure.DAL;
-using Courses.Infrastructure.Entities;
 using Courses.Infrastructure.Extensions;
-using Courses.Infrastructure.Services;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Identity;
+using Courses.WebApp.Filters;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Routing;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.AddInfrastructure();
-
-
-//builder.Services.AddHttpContextAccessor();
-//builder.Services.AddScoped<SignInManager<UserEntity>>();
-//builder.Services.AddScoped<UserManager<UserEntity>>();
+builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+builder.Services.AddSingleton<IUrlHelperFactory, UrlHelperFactory>();
+builder.Services.AddScoped<BreadcrumbActionFilter>();
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add(typeof(BreadcrumbActionFilter));
+});
+builder.Services.AddRouting(x => x.LowercaseUrls = true);
 
 var app = builder.Build();
 app.UseInfrastructure();
+
+
 app.Run();
