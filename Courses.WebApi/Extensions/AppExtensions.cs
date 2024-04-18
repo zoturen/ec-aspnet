@@ -100,15 +100,6 @@ public static class AppExtensions
         dbContext.Database.Migrate();
 
         app.UseAuthentication();
-
-        app.MapGet("/", (HttpContext context) =>
-        {
-
-            Console.WriteLine("hello");
-            Console.WriteLine();
-            return "hello";
-        }).RequireAuthorization("APIKEY", JwtBearerDefaults.AuthenticationScheme);
-
         app.MapControllers();
     }
 }
